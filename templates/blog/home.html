@@ -1,0 +1,44 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+  <div class="col-9">{% include "blog/partials/posts.html" %}</div>
+ 
+  <div class="col-3">
+    <!-- Recent Posts -->
+    <div class="mb-2">
+      <h1>Recent Posts</h1>
+      {% for recent_post in recent_posts %}
+        <div class="card mt-3" style="width: 18rem;">
+          <img src="{{ recent_post.featured_image.url }}"
+               class="card-img-top"
+               alt="{{ recent_post.title }}">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="{% url 'post-detail' recent_post.pk %}">{{ recent_post.title }}</a>
+            </h5>
+            <p class="card-text">{{ recent_post.content | truncatechars:80 }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <!-- Recent Posts end -->
+
+    <!-- Top Posts -->
+    <div class="mt-2">
+      <h1>Top Posts</h1>
+      {% for top_post in top_posts %}
+        <div class="card mt-3" style="width: 18rem;">
+          <img src="{{ top_post.featured_image.url }}"
+               class="card-img-top"
+               alt="{{ top_post.title }}">
+          <div class="card-body">
+            <a href="{% url 'post-detail' top_post.pk %}">{{ top_post.title }}</a>
+            <p class="card-text">{{ top_post.content | truncatechars:80 }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <!-- Top Posts end -->
+
+  </div>
+{% endblock content %}

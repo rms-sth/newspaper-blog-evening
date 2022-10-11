@@ -1,0 +1,17 @@
+<div class="col-lg-8 posts-list">
+  <div class="single-post">
+    <div class="feature-img">
+      <img class="img-fluid"
+           src="{{ post.featured_image.url }}"
+           alt="{{ post.title }}">
+    </div>
+    <div class="blog_details">
+      <h2>{{ post.title }}</h2>
+      {{ post.content | safe }}
+    </div>
+  </div>
+  {% include "aznews/main/post/post_detail/navigation_top.html" %}
+  {% include "aznews/main/post/post_detail/post_author.html" %}
+  {% include "aznews/main/post/post_detail/post_comment.html" %}
+  {% include "aznews/main/post/post_detail/post_comment_form.html" %}
+</div>
